@@ -10,13 +10,13 @@ import { FetchDataService } from '../fetch-data.service';
 export class FetchDataComponent implements OnInit {
   constructor(private _fetchDataService: FetchDataService) { }
 
-  users: any; 
+  users: object; 
   
   ngOnInit() {
      this._fetchDataService.getUsers().subscribe(
-      data => { 
-        this.users = data
-        console.log(data)
+      data => {
+        this.users = Array.of(data);
+        console.log(Array.of(data))
       },
       err => console.error(err)
      );

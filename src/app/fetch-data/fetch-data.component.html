@@ -1,5 +1,8 @@
+
 <div class="card card-block"
      *ngFor="let user of users">
-  <h4 class="card-title">{{user.name}}</h4>
-  <p class="card-text">{{user.age}}</p>
+  <span class="card-title">Hello {{user.first_name | uppercase}}</span>
+  <span class="card-text">{{user.last_name | uppercase}} !</span>
+  <h3><a href='/menu'>go to order dinner</a></h3>
+
 </div>

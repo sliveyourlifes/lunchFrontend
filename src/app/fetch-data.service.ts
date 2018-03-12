@@ -7,6 +7,6 @@ export class FetchDataService {
   constructor(private _http: HttpClient) { }
 
   getUsers() {
-    return this._http.get('http://localhost:3000/');
+    return this._http.get('/api/v1/users');
   }
 }
