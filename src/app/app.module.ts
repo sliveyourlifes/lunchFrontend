@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from './profile.service';
+import { LunchComponent } from './lunch/lunch.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent
+    ProfileComponent,
+    LunchComponent
   ],
   imports: [
     BrowserModule,
