@@ -3,22 +3,25 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 
-
 import { AppComponent } from './app.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { FetchDataService } from './fetch-data.service';
+import { AppRoutingModule } from './app-routing.module';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileService } from './profile.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FetchDataComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
-  providers: [ FetchDataService ],
+  providers: [ 
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

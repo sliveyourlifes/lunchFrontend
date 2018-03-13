@@ -1,0 +1,6 @@
+<div class="user-profile"
+     *ngFor="let field of profile">
+  <span class="item">HELLO {{field.first_name | uppercase}}</span>
+  <span class="item">{{field.last_name | uppercase}} !</span>
+  <h3><a href='/menu'>go to order dinner</a></h3>
+</div>
