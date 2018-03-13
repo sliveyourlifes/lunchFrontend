@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from './profile.service';
 import { LunchComponent } from './lunch/lunch.component';
+import { LunchListComponent } from './lunch-list/lunch-list.component';
+import { LunchListService } from './lunch-list.service';
 
 
 
@@ -15,7 +17,8 @@ import { LunchComponent } from './lunch/lunch.component';
   declarations: [
     AppComponent,
     ProfileComponent,
-    LunchComponent
+    LunchComponent,
+    LunchListComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { LunchComponent } from './lunch/lunch.component';
     AppRoutingModule
   ],
   providers: [ 
-    ProfileService
+    ProfileService,
+    LunchListService
   ],
   bootstrap: [AppComponent]
 })
