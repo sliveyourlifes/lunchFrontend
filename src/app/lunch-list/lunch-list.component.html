@@ -1,6 +1,25 @@
-<ul class="list"
-     *ngFor="let lunch of lunches">
-  <li class="item">{{ lunch.name }}</li>
-  <li class="item">{{ lunch.description }}</li>
-  <li class="item">{{ lunch.energy_falue }}</li>
+<!-- <ul class="list" > 
+  <li *ngFor="let lunch of lunchesData"   class="list-element">
+    <div class="item name">{{ lunch.date }}</div>
+    <ul>
+      <li *ngFor="let item of lunch.menuList">
+          <p class='aaa' (click)="onSelect()">{{item.name}}</p>
+          <p class='aaa' [hidden]="selectedLunch">{{item.description}} </p>
+          <p class='aaa' [hidden]="selectedLunch">{{item.energy_value}} </p>
+      </li>
+    </ul>
+  </li>
+</ul> -->
+
+<h1>{{date}}</h1>
+
+<ul id="list">
+  <li *ngFor="let item of list">
+    <input class="checkbox" type="checkbox" [name]="item.name" [value]="item.name" >
+    <span class='aaa' (click)="toggle(item)">{{item.name}}</span>
+    <div *ngIf="item.hide">
+      <p class='aaa'>{{item.description}} </p>
+      <p class='aaa'>{{item.energy_value}} </p>
+  </div>
+  </li>
 </ul>

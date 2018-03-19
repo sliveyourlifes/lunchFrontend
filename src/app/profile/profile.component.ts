@@ -10,16 +10,16 @@ export class ProfileComponent implements OnInit {
 
   constructor(private profileService: ProfileService) { }
 
-  profile: object;
+  profile: Array<object>;
   
   ngOnInit() {
      this.profileService.getUsers().subscribe(
       data => {
         this.profile = Array.of(data);
-        console.log(this.profile)
+        console.log(data)
       },
       err => console.error(err)
      );
   }
-
+  
 }
