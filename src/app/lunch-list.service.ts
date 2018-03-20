@@ -4,10 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class LunchListService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getLunch() {
-    return this._http.get('/api/v1/lunch');
+    return this.http.get('/api/v1/lunch');
   }
 
 }

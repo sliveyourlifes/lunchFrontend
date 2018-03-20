@@ -5,10 +5,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class ProfileService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getUsers() {
-    return this._http.get('/api/v1/users');
+    return this.http.get('/api/v1/users');
   }
 
 }
