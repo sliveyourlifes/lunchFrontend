@@ -10,6 +10,7 @@ import { ProfileService } from './profile.service';
 import { LunchComponent } from './lunch/lunch.component';
 import { LunchListComponent } from './lunch-list/lunch-list.component';
 import { LunchListService } from './lunch-list.service';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -23,6 +24,7 @@ import { LunchListService } from './lunch-list.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule

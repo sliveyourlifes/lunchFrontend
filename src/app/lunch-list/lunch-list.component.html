@@ -1,3 +1,5 @@
+
+
 <form [formGroup]="myForm">
         <div *ngFor="let data of lunchDishes">
             <input type="checkbox" (change)="onChange(data._id, $event.target.checked)">
@@ -7,6 +9,8 @@
                 <p>{{data.energyValue}}</p>
             </div> 
         </div>
+
+        <input type="button" class="submit" (click)="onSubmit()" value="submit">
 </form>
   
 <pre>Form values: {{myForm.value | json}}</pre>
