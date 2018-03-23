@@ -14,6 +14,7 @@ export class LunchListComponent implements OnInit {
   myForm: FormGroup;
   idFormArray: Array<string> = []
 
+
   constructor(private lunchService: LunchListService, private fb: FormBuilder, private http: Http) {}
 
   ngOnInit() {
@@ -44,10 +45,19 @@ export class LunchListComponent implements OnInit {
       }
   };
 
+  
 
   onSubmit(){
+
+    const httpOptions = {
+      withCredentials: true,
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      })
+    };
+
     let url = `http://localhost:3000/api/v1/lunch`;
-    this.http.post(url,this.myForm.value.id).subscribe(res => console.log(res.json()));
+    this.http.post(url,this.myForm.value.id, httpOptions).subscribe(res => console.log(res.json()));
     console.log(this.myForm.value.id)
   }
 
