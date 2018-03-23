@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LunchListService } from '../lunch-list.service';
-// import { Menu } from '../Menu';
+import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 @Component({
   selector: 'app-lunch-list',
@@ -9,63 +10,60 @@ import { LunchListService } from '../lunch-list.service';
 })
 export class LunchListComponent implements OnInit {
 
-  lunchesData: Object;
-  date: string;
-  list:Array<object>;
-  _id: string;
-  // hide: boolean;
+  lunchDishes: Array<object> = [];
+  myForm: FormGroup;
+  idFormArray: Array<string> = []
 
-  constructor(private lunchService: LunchListService) {
-   
-  }
 
- 
+  constructor(private lunchService: LunchListService, private fb: FormBuilder, private http: Http) {}
 
   ngOnInit() {
-     this.lunchService.getLunch().subscribe(
+
+    this.myForm = this.fb.group({
+      id: this.fb.array([])
+    });
+
+    this.lunchService.getLunch().subscribe(
       data => {
-        // this.lunchesData = data;
-        // console.log(this.lunchesData)
-        let currentDate = new Date();
-        let shortDate = currentDate.getFullYear()+"-"+("0"+(currentDate.getMonth()+1))+"-"+currentDate.getDate();
-        let [ lunchesData ] = data;
-        // console.log(this.hide);
-        lunchesData.hide = true;
-        console.log(lunchesData)
-        // console.log(Object.keys(lunchesData).length)
-        // console.log(lunchesData.date.includes(shortDate));
-        // if(lunchesData.date.includes(shortDate)){
-          this.date = shortDate;
-          this.list = lunchesData.menuList;
-          this._id = lunchesData._id;
-          // this.hide = true;
-          this.onlyOneCheckBox();
-        // }
-      },
-      err => console.error(err)
-     );
+        this.lunchDishes = data;
+        this.lunchDishes.map((item)=> {
+          return item.selected = false
+      })
+    },
+    err => console.error(err)
+    );
   }
 
-  toggle(item) {
-		item.hide = !item.hide;
+  onChange(id:string, isChecked: boolean) {
+    const idFormArray = <FormArray>this.myForm.controls.id;
+      if(isChecked) {
+        idFormArray.push(new FormControl(id));
+        console.log(idFormArray.value)
+      } else {
+        let index = idFormArray.controls.findIndex(x => x.value == id)
+        idFormArray.removeAt(index);
+      }
+  };
+
+  
+
+  onSubmit(){
+
+    const httpOptions = {
+      withCredentials: true,
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      })
+    };
+
+    let url = `http://localhost:3000/api/v1/lunch`;
+    this.http.post(url,this.myForm.value.id, httpOptions).subscribe(res => console.log(res.json()));
+    console.log(this.myForm.value.id)
+  }
+
+  toggle(data) {
+    data.selected = !data.selected;
   }
   
-   onlyOneCheckBox() {
-          window.onload = function() {
-          var checkboxgroup = document.getElementById('list').getElementsByTagName("input");
-          var limit = 4;
-          for (let i = 0; i < checkboxgroup.length; i++) {
-              checkboxgroup[i].onchange = function() {
-                  let checkedcount = 0;
-                      for (let i = 0; i < checkboxgroup.length; i++) {
-                      checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
-                      console.log(checkedcount);
-                  }
-                  if (checkedcount > limit) {
-                      this.checked = false;
-                  }
-              }
-          }
-      }
-   }
 }
+

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -10,6 +10,7 @@ import { ProfileService } from './profile.service';
 import { LunchComponent } from './lunch/lunch.component';
 import { LunchListComponent } from './lunch-list/lunch-list.component';
 import { LunchListService } from './lunch-list.service';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -23,7 +24,10 @@ import { LunchListService } from './lunch-list.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    HttpModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ 
     ProfileService,
