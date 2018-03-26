@@ -4,6 +4,7 @@ import { Route } from '@angular/compiler/src/core';
 
 import {LunchComponent} from './lunch/lunch.component';
 import {ProfileComponent} from './profile/profile.component'
+import { LunchListComponent } from './lunch-list/lunch-list.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
     {
       path: 'lunch',
       component: LunchComponent
+    },
+    {
+      path: 'lunch/orders/:id',
+      component: LunchListComponent
     }
 ]
 

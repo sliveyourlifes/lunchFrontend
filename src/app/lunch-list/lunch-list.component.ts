@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LunchListService } from '../lunch-list.service';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import {Router ,Routes, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-lunch-list',
@@ -15,7 +16,7 @@ export class LunchListComponent implements OnInit {
   idFormArray: Array<string> = []
 
 
-  constructor(private lunchService: LunchListService, private fb: FormBuilder, private http: Http) {}
+  constructor(private lunchService: LunchListService, private fb: FormBuilder, private http: Http, private router:Router) {}
 
   ngOnInit() {
 
@@ -57,7 +58,11 @@ export class LunchListComponent implements OnInit {
     };
 
     let url = `http://localhost:3000/api/v1/lunch`;
-    this.http.post(url,this.myForm.value.id, httpOptions).subscribe(res => console.log(res.json()));
+    this.http.post(url,this.myForm.value.id, httpOptions).subscribe(res => {
+     
+     console.log(res.json());
+      this.router.navigate(['lunch/orders/' + `${res.json()._id}`]);
+    });
     console.log(this.myForm.value.id)
   }
 
