@@ -11,7 +11,7 @@ import {Router ,Routes, RouterModule} from "@angular/router";
 })
 export class LunchListComponent implements OnInit {
 
-  lunchDishes: Array<object> = [];
+  lunchDishes: any;
   myForm: FormGroup;
   idFormArray: Array<string> = []
 
