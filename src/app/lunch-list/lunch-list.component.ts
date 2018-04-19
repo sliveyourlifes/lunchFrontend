@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LunchListService } from '../lunch-list.service';
+import { LunchListService } from './services/lunch-list.service';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import {Router ,Routes, RouterModule} from "@angular/router";

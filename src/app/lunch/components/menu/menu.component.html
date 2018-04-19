@@ -1,0 +1,20 @@
+<form action="/aaa" method="POST" (submit)="saves($event)">
+  <ul>
+    <li *ngFor="let dish of dishes">
+      <label [for]="dish._id">
+        <input type="checkbox" 
+          [id]="dish._id"
+          (change)="changes($event, dish)"
+          
+          [disabled]="dish.disabled">
+      </label> 
+       {{dish.name}} {{ dish.disabled ? 1 : '0' }}<span>[+]</span>
+        <div *ngIf="dish.showDetails">
+            <p>{{dish.description}}</p>
+            <p>{{dish.energyValue}}</p>
+        </div>
+      
+    </li>
+    <button type="submit">save</button>
+  </ul>
+</form>

@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
 
-import {LunchComponent} from './lunch/lunch.component';
+import {DishesComponent} from './dishes/dishes.component';
 import {ProfileComponent} from './profile/profile.component'
 import { LunchListComponent } from './lunch-list/lunch-list.component';
-
+import { CreateOrderComponent } from './lunch/pages/create-order/create-order.component'
+  
 
 const routes: Routes = [
     {
@@ -14,12 +15,12 @@ const routes: Routes = [
     },
     {
       path: 'lunch',
-      component: LunchComponent
+      component: CreateOrderComponent
     },
-    {
-      path: 'lunch/orders/:id',
-      component: LunchListComponent
-    }
+    // {
+    //   path: 'lunch/orders/:id',
+    //   component: LunchListComponent
+    // },
 ]
 
 @NgModule({
